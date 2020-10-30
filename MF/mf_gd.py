@@ -11,7 +11,7 @@ class MatrixFactorization():
     def __init__(self, R, k, learning_rate, reg_param, epochs, verbose=False):
         """
         :param R: rating matrix
-        :param k: latent parameter
+        :param k: latent parameter (num_columns of P = num_rows of Q)
         :param learning_rate: alpha on weight update
         :param reg_param: beta on weight update
         :param epochs: training epochs
@@ -40,7 +40,7 @@ class MatrixFactorization():
 
         # init latent features
         self._P = np.random.normal(size=(self._num_users, self._k))
-        self._Q = np.random.normal(size=(self._num_items, self._k))
+        self._Q = np.random.normal(size=(self._num_items, self._k)) # shape이 왜 이렇게 되는거지?? Q에서 k는 row 개수 아닌가?
 
         # init biases
         self._b_P = np.zeros(self._num_users)
